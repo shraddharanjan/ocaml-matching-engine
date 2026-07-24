@@ -8,3 +8,5 @@ type t =
   ; sequence : int
   }
 [@@deriving equal, sexp]
+
+val quantity : t -> int

@@ -8,3 +8,5 @@ type t =
   ; sequence : int
   }
 [@@deriving equal, sexp]
+
+let quantity trade = trade.quantity
