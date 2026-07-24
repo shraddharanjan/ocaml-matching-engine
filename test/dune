@@ -1,0 +1,13 @@
+(test
+ (name test_order_book)
+ (modules test_order_book)
+ (libraries core matching_engine alcotest)
+ (preprocess
+  (pps ppx_jane)))
+
+(test
+ (name test_properties)
+ (modules test_properties)
+ (libraries core matching_engine alcotest qcheck qcheck-alcotest)
+ (preprocess
+  (pps ppx_jane)))

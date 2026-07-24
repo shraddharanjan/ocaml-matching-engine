@@ -1,0 +1,139 @@
+(lang dune 3.24)
+(name matching_engine)
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/matching_engine))
+(files
+ (lib
+  (META
+   dune-package
+   engine.ml
+   engine.mli
+   id.ml
+   id.mli
+   matching_engine.a
+   matching_engine.cma
+   matching_engine.cmi
+   matching_engine.cmt
+   matching_engine.cmx
+   matching_engine.cmxa
+   matching_engine.ml
+   matching_engine__Engine.cmi
+   matching_engine__Engine.cmt
+   matching_engine__Engine.cmti
+   matching_engine__Engine.cmx
+   matching_engine__Id.cmi
+   matching_engine__Id.cmt
+   matching_engine__Id.cmti
+   matching_engine__Id.cmx
+   matching_engine__Order.cmi
+   matching_engine__Order.cmt
+   matching_engine__Order.cmti
+   matching_engine__Order.cmx
+   matching_engine__Order_book.cmi
+   matching_engine__Order_book.cmt
+   matching_engine__Order_book.cmti
+   matching_engine__Order_book.cmx
+   matching_engine__Price.cmi
+   matching_engine__Price.cmt
+   matching_engine__Price.cmti
+   matching_engine__Price.cmx
+   matching_engine__Price_level.cmi
+   matching_engine__Price_level.cmt
+   matching_engine__Price_level.cmti
+   matching_engine__Price_level.cmx
+   matching_engine__Trade.cmi
+   matching_engine__Trade.cmt
+   matching_engine__Trade.cmti
+   matching_engine__Trade.cmx
+   opam
+   order.ml
+   order.mli
+   order_book.ml
+   order_book.mli
+   price.ml
+   price.mli
+   price_level.ml
+   price_level.mli
+   trade.ml
+   trade.mli))
+ (libexec (matching_engine.cmxs))
+ (bin (matching-engine))
+ (doc (README.md)))
+(library
+ (name matching_engine)
+ (kind normal)
+ (archives (byte matching_engine.cma) (native matching_engine.cmxa))
+ (plugins (byte matching_engine.cma) (native matching_engine.cmxs))
+ (native_archives matching_engine.a)
+ (requires
+  core
+  ppx_sexp_conv.runtime-lib
+  sexplib0
+  ppx_compare.runtime-lib
+  ppx_enumerate.runtime-lib
+  ppx_hash.runtime-lib
+  ppx_here.runtime-lib
+  ppx_assert.runtime-lib
+  ppx_bench.runtime-lib
+  bin_prot
+  fieldslib
+  ppx_inline_test.config
+  ppx_inline_test.runtime-lib
+  ppx_module_timer.runtime
+  ppx_stable_witness.runtime
+  ppx_string.runtime
+  base
+  typerep
+  variantslib
+  ppx_expect.runtime
+  ppx_expect.config
+  ppx_log.types
+  ppx_log.syntax
+  base_quickcheck.ppx_quickcheck.runtime
+  base_quickcheck)
+ (main_module_name Matching_engine)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name matching_engine)
+     (visibility public)
+     (kind alias)
+     (source (path Matching_engine) (impl (path matching_engine.ml-gen))))
+    (name Matching_engine)
+    (modules
+     (module
+      (obj_name matching_engine__Engine)
+      (visibility public)
+      (source (path Engine) (intf (path engine.mli)) (impl (path engine.ml))))
+     (module
+      (obj_name matching_engine__Id)
+      (visibility public)
+      (source (path Id) (intf (path id.mli)) (impl (path id.ml))))
+     (module
+      (obj_name matching_engine__Order)
+      (visibility public)
+      (source (path Order) (intf (path order.mli)) (impl (path order.ml))))
+     (module
+      (obj_name matching_engine__Order_book)
+      (visibility public)
+      (source
+       (path Order_book)
+       (intf (path order_book.mli))
+       (impl (path order_book.ml))))
+     (module
+      (obj_name matching_engine__Price)
+      (visibility public)
+      (source (path Price) (intf (path price.mli)) (impl (path price.ml))))
+     (module
+      (obj_name matching_engine__Price_level)
+      (visibility public)
+      (source
+       (path Price_level)
+       (intf (path price_level.mli))
+       (impl (path price_level.ml))))
+     (module
+      (obj_name matching_engine__Trade)
+      (visibility public)
+      (source (path Trade) (intf (path trade.mli)) (impl (path trade.ml))))))
+   (wrapped true))))

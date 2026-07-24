@@ -1,0 +1,6 @@
+(library
+ (name matching_engine)
+ (public_name matching_engine)
+ (libraries core)
+ (preprocess
+  (pps ppx_jane)))
