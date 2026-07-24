@@ -16,21 +16,14 @@ let update_first level order =
 
 let remove_order level id =
   let rec loop reversed = function
-    | [] ->
-        List.rev reversed, None
+    | [] -> List.rev reversed, None
     | order :: rest ->
-        if Id.equal (Order.id order) id
-        then List.rev_append reversed rest, Some order
-        else loop (order :: reversed) rest
+      if Id.equal (Order.id order) id
+      then List.rev_append reversed rest, Some order
+      else loop (order :: reversed) rest
   in
   loop [] level
 ;;
 
 let orders level = level
-
-let total_quantity level =
-  List.sum
-    (module Int)
-    level
-    ~f:Order.quantity
-;;
+let total_quantity level = List.sum (module Int) level ~f:Order.quantity

@@ -18,9 +18,5 @@ val submit_limit_order
   -> quantity:int
   -> (t * Trade.t list, error) Result.t
 
-val cancel
-  :  t
-  -> Id.t
-  -> (t * Order.t, error) Result.t
-
+val cancel : t -> Id.t -> (t * Order.t, error) Result.t
 val book : t -> Order_book.t
